@@ -7,6 +7,7 @@ using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Program
@@ -15,11 +16,15 @@ public class Program
     {
         Program program = new Program();
         //program.Task_1_1(8, 5);
+
         //program.Task_1_2(new double[] { 1, 1.5, 1 }, new double[] { 1, 1.75, 1 });
+
         //program.Task_1_3a(10, 1, 9, 1.6, 4);
         //program.Task_1_3b(10, 1, 9, 1.6);
+
         //program.Task_2_2(new double[] { 1, 12, 3, 4, 5, -6, 7, 0, 9 },
         //                 new double[] { 1, 2, 13, 4, -5, 6, 7 });
+
         //program.Task_2_4(new int[,] {
         //                { 1,    2,   3,   4,   5 },
         //                { 6,    7,   8,   9,   10 },
@@ -32,10 +37,13 @@ public class Program
         //                { 11,  12,  13,  14,   15 },
         //                { -1,  -2,  -3 , -4,   -5 },
         //                { 6,    7,   8,   9,   0 }});
+
         //int[] A = { 1, 2, 13, 4, -5, 6, 7 };
         //program.Task_2_6(ref A, new int[] { 1, 8, -3, 5, 5, 1, 0, 4 });
+
         //program.Task_2_8(new int[] { 1, 12, 3, 4, 5, -6, 7, 0, 9 }, 
         //                 new int[] { 1, 12, 13, 0, 9, 1, 5, -6, 7, 12, 14 });
+
         //int[,] matrix5x5 = new int[,] {
         //    { 1, 2, 3, 4, 5 },
         //    { 6, 7, 8, 9, 10 },
@@ -43,6 +51,7 @@ public class Program
         //    { -1, -2, -3, -4, -5 },
         //    { 6, 7, 8, 9, 0 }};
         //program.Task_2_10(ref matrix5x5);
+
         //program.Task_2_12(new int[,] {
         //               { 1,   2,   3,   4,   5 },
         //               { 6,   7,   8,   9,  10 },
@@ -55,6 +64,7 @@ public class Program
         //               { 2,  13,  14,  15,  -3 },
         //               { 2,  -3,  -4,  -5,  -1 },
         //               { 7,   8,   9,   0,  -2 }});
+
         //program.Task_2_14(new int[,] {
         //    { 1, 2, 3, 4 },
         //    { 5, 5, 4, 6 },
@@ -63,8 +73,10 @@ public class Program
         //    { -6, -5, -8, 0 },
         //    { 11, 12, 13, 14 },
         //    { 6, 5, 8, 0 }}); 
+
         //program.Task_2_16(new int[] { 1, 8, -3, 5, 5, 1, 0, 4 }, 
         //                  new int[] { 1, -8, -3, 5, -5, 1, 0, -4, -1, 2 });
+
         //program.Task_2_18(new int[,] {
         //                { 1,   2,   3,   4,   5 },
         //                { 6,   7,   8,   9,  10 },
@@ -78,22 +90,77 @@ public class Program
         //                { -1, -2, -3, -4, -5, -1 },
         //                { 6,  7,  8,  9,  20, -2 },
         //                { 1,  3,  3,  1,  5,   5 }});
-        int[,] A = new int[,] {
-            { 1, 2, 3, 4 },
-            { 5, 5, 4, 6 },
-            { 5, -5, 5, -5 },
-            { 6, 7, 8, 9 },
-            { -6, -5, -8, 0 },
-            { 11, 12, 13, 14 },
-            { 6, 5, 8, 0 }};
-        int[,] B = new int[,] {
-            { 1, 2, 3, 4, 5 },
-            { 6, 7, 8, 9, 10 },
-            { 11, 12, 13, 14, 15 },
-            { -1, -2, -3, -4, -5 },
-            { 0, 1, 0, 2, 0 },
-            { 6, 7, 8, 9, 0 }};
-        program.Task_2_20(ref A, ref B);
+
+        //int[,] A = new int[,] {
+        //    { 1, 2, 3, 4 },
+        //    { 5, 5, 4, 6 },
+        //    { 5, -5, 5, -5 },
+        //    { 6, 7, 8, 9 },
+        //    { -6, -5, -8, 0 },
+        //    { 11, 12, 13, 14 },
+        //    { 6, 5, 8, 0 }};
+        //int[,] B = new int[,] {
+        //    { 1, 2, 3, 4, 5 },
+        //    { 6, 7, 8, 9, 10 },
+        //    { 11, 12, 13, 14, 15 },
+        //    { -1, -2, -3, -4, -5 },
+        //    { 0, 1, 0, 2, 0 },
+        //    { 6, 7, 8, 9, 0 }};
+        //program.Task_2_20(ref A, ref B);
+
+        //int[] rows, cols;
+        //program.Task_2_22( new int[,] {
+        //    { 1,  2,  3,  4,  5,  -1 },
+        //    { 6,  7,  8,  9,  10, -2 },
+        //    { 11, 12, 13, 14, 15, -3 },
+        //    { -1, -2, -3, -4, -5, -1 },
+        //    { 6,  7,  8,  9,  20, -2 },
+        //    { 1,  3,  3,  1,  5,   5 }}, 
+        //    out rows, out cols);
+
+        //program.Task_2_24(new int[,] {
+        //                { 1,  2,  3,  4,  5 },
+        //                { 6,  7,  8,  9,  10 },
+        //                { 11, 12, 13, 14, 15 },
+        //                { -1, -2, -3, -4, -5 },
+        //                { 6,  7,  8,  9,  0 }},
+        //                new int[,] {
+        //                { 1,  2,  3,  4,  5,  -1 },
+        //                { 6,  7,  8,  9,  10, -2 },
+        //                { 11, 12, 13, 14, 15, -3 },
+        //                { -1, -2, -3, -4, -5, -1 },
+        //                { 6,  7,  8,  9,  20, -2 },
+        //                { 1,  3,  3,  1,  5,   5 }});
+
+        //program.Task_2_26(new int[,] {
+        //                { -1, 1,  2,  3,  4,  5 },
+        //                { -1, 6,  7,  8,  9,  10 },
+        //                { -1, 11, 12, 13, 14, 15 },
+        //                { -1, -1, -2, -3, -4, -5 },
+        //                { 6,  7,  8,  9,  20, -2 },
+        //                { -1, 6,  7,  8,  9,  0 }},
+        //                new int[,] {
+        //                { 1,  2,  3,  4,  5,  -1 },
+        //                { 6,  7,  8,  9,  10, -2 },
+        //                { 11, 12, 13, 14, 15, -3 },
+        //                { -1, -2, -3, -4, -5, -1 },
+        //                { 6,  7,  8,  9,  20, -2 },
+        //                { 1,  3,  3,  1,  5,   5 }});
+
+        //int answerFirst = 0;
+        //int answerSecond = 0;
+        //program.Task_2_28a(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
+        //                   ref answerFirst, ref answerSecond);
+        //int[,] answerFirst = null;
+        //int[,] answerSecond = null;
+        //program.Task_2_28b(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
+        //                   ref answerFirst, ref answerSecond);
+        int[] answerFirst = null;
+        int[] answerSecond = null;
+        program.Task_2_28c(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
+                           ref answerFirst, ref answerSecond);
+
+
     }
     #region Level 1
     public long Task_1_1(int n, int k)
@@ -562,7 +629,6 @@ public class Program
                         newmatrix[i, jj] = matrix[i, j];
                     }
                     else { jj--; break; }
-
                 }
             }
             return newmatrix;
@@ -912,39 +978,46 @@ public class Program
                     {
                         newmatrix[i, jj] = matrix[i, j];
                     }
-                    else 
-                    { 
-                        if (jj > 0)
-                            jj--; 
-                        break; 
-                    }
+                    else { jj--; break; }
                 }
             }
             return newmatrix;
         }
 
-        for (int j = 0; j < A.GetLength(1); j++)
+        for (int j = A.GetLength(1) - 1; j >= 0; j--)
         {
             string kolvo0 = "no";
             for (int i = 0; i < A.GetLength(0); i++)
             {
                 if (A[i, j] == 0)
+                {
                     kolvo0 = "yes";
+                    break;
+                }
             }
             if (kolvo0 == "no")
+            {
                 A = RemoveColumn(A, j);
+            }
         }
-        for (int j = 0; j < B.GetLength(1); j++)
+        for (int j = B.GetLength(1) - 1; j >= 0; j--)
         {
             string kolvo0 = "no";
             for (int i = 0; i < B.GetLength(0); i++)
             {
                 if (B[i, j] == 0)
+                {
                     kolvo0 = "yes";
+                    break;
+                }
             }
             if (kolvo0 == "no")
+            {
                 B = RemoveColumn(B, j);
+            }
+
         }
+
         Console.WriteLine("First: ");
         for (int i = 0; i < A.GetLength(0); i++)
         {
@@ -985,9 +1058,61 @@ public class Program
         cols = null;
 
         // code here
-
         // create and use CountNegativeInRow(matrix, rowIndex);
         // create and use FindMaxNegativePerColumn(matrix);
+
+        static int CountNegativeInRow(int[,] matrix, int rowIndex)
+        {
+            int kolvoOtriz = 0;
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                if (matrix[rowIndex, j] < 0)
+                {
+                    kolvoOtriz++;
+                }
+            }
+            return kolvoOtriz;
+        }
+        static int[] FindMaxNegativePerColumn(int[,] matrix)
+        {            
+            int[] elements = new int[matrix.GetLength(1)];
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                int elemaxOtriz = -999;
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    if (matrix[i, j] < 0 && elemaxOtriz < matrix[i, j])
+                    {
+                        elemaxOtriz = matrix[i, j];
+                    }
+                }
+                if (elemaxOtriz != -999) { elements[j] = elemaxOtriz; }                    
+                else { elements[j] = 0; }
+            }
+            return elements;
+        }
+
+        rows = new int[matrix.GetLength(0)];
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            rows[i] = CountNegativeInRow(matrix, i);
+        }
+        
+        cols = FindMaxNegativePerColumn(matrix);
+        
+        Console.Write("rows: ");
+        for (int i = 0; i < rows.Length; i++)
+        {
+            Console.Write(rows[i] + " ");
+        }
+        Console.WriteLine();
+        Console.Write("cols: ");
+        for (int i = 0; i < cols.Length; i++)
+        {
+            Console.Write(cols[i] + " ");
+        }
+        Console.WriteLine();
+        Console.WriteLine();
 
         // end
     }
@@ -1004,9 +1129,68 @@ public class Program
     public void Task_2_24(int[,] A, int[,] B)
     {
         // code here
-
         // use FindMaxIndex(matrix, out row, out column); like in 2_1
         // create and use SwapColumnDiagonal(matrix, columnIndex);
+
+        if (A.GetLength(0) != A.GetLength(1) || B.GetLength(0) != B.GetLength(1))
+        {
+            Console.WriteLine("Error");
+            return;
+        }
+        
+        static void FindMaxIndex(int[,] matrix, out int row, out int column)
+        {
+            row = 0; column = 0;
+            int elemax = -999;
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] > elemax)
+                    {
+                        elemax = matrix[i, j];
+                        row = i; 
+                        column = j; 
+                    }
+                }
+            }
+        }
+        static int[,] SwapColumnDiagonal(int[,] matrix, int columnIndex)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                int reserv = matrix[i, i];
+                matrix[i, i] = matrix[i, columnIndex];
+                matrix[i, columnIndex] = reserv;
+            }
+            return matrix;
+        }
+
+        int imaxA, jmaxA, imaxB, jmaxB;
+        FindMaxIndex(A, out imaxA, out jmaxA);
+        FindMaxIndex(B, out imaxB, out jmaxB);
+
+        A = SwapColumnDiagonal(A, jmaxA);
+        B = SwapColumnDiagonal(B, jmaxB);
+
+        Console.WriteLine("First: ");
+        for (int i = 0; i < A.GetLength(0); i++)
+        {
+            for (int j = 0; j < A.GetLength(1); j++)
+            {
+                Console.Write(A[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine("Second: ");
+        for (int i = 0; i < B.GetLength(0); i++)
+        {
+            for (int j = 0; j < B.GetLength(1); j++)
+            {
+                Console.Write(B[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
 
         // end
     }
@@ -1027,9 +1211,79 @@ public class Program
     public void Task_2_26(int[,] A, int[,] B)
     {
         // code here
-
         // create and use FindRowWithMaxNegativeCount(matrix); like in 2_25
         // in FindRowWithMaxNegativeCount use CountNegativeInRow(matrix, rowIndex); from 2_22
+        //В двух заданных матрицах одинакового размера поменять строки, содержащие
+        //максимальное количество отрицательных элементов. Нахождение количества
+        //отрицательных элементов заданной строки матрицы осуществлять в методе.
+        //Определение номера строки, содержащей максимальное количество отрицательных
+        //элементов, осуществлять в методе.
+
+        if (A.GetLength(0) != B.GetLength(0) || A.GetLength(1) != B.GetLength(1))
+        {
+            Console.WriteLine("Error");
+            return;
+        }
+
+        static int CountNegativeInRow(int[,] matrix, int rowIndex)
+        {
+            int kolvoOtriz = 0;
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                if (matrix[rowIndex, j] < 0)
+                {
+                    kolvoOtriz++;
+                }
+            }
+            return kolvoOtriz;
+        }
+        static int FindRowWithMaxNegativeCount(int[,] matrix)
+        {
+            int stroka = 0, kolvomax = -999;
+            int[] rows = new int[matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                rows[i] = CountNegativeInRow(matrix, i);
+            }
+            for (int e = 0; e < rows.Length; e++)
+            {
+                if (rows[e] > kolvomax)
+                {
+                    kolvomax = rows[e];
+                    stroka = e;
+                }
+            }
+            return stroka;
+        }
+
+        int iA = FindRowWithMaxNegativeCount(A);
+        int iB = FindRowWithMaxNegativeCount(B);
+
+        for (int j = 0; j < A.GetLength(0); j++)
+        {
+            int reserv = A[iA, j];
+            A[iA, j] = B[iB, j];
+            B[iB, j] = reserv;
+        }
+
+        Console.WriteLine("First: ");
+        for (int i = 0; i < A.GetLength(0); i++)
+        {
+            for (int j = 0; j < A.GetLength(1); j++)
+            {
+                Console.Write(A[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine("Second: ");
+        for (int i = 0; i < B.GetLength(0); i++)
+        {
+            for (int j = 0; j < B.GetLength(1); j++)
+            {
+                Console.Write(B[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
 
         // end
     }
@@ -1045,12 +1299,59 @@ public class Program
         // end
     }
 
+    static int FindSequence(int[] array, int A, int B)
+    {
+        if (array[B] >= array[A])
+        {
+            int count = 0;
+            for (int i = A + 1; i <= B; i++)
+            {
+                if (array[i - 1] > array[i])
+                {
+                    return 0;
+                }
+                else if (array[i - 1] <= array[i])
+                {
+                    count++;
+                }
+            }
+            if (count == (B - A)) 
+            {
+                return 1;
+            }
+        }
+        else if (array[B] < array[A])
+        {
+            int count = 0;
+            for (int i = A + 1; i <= B; i++)
+            {
+                if (array[i - 1] < array[i])
+                {
+                    return 0;
+                }
+                else if (array[i - 1] >= array[i])
+                {
+                    count++;
+                }
+            }
+            if (count == (B - A))
+            {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
     public void Task_2_28a(int[] first, int[] second, ref int answerFirst, ref int answerSecond)
     {
         // code here
+        // create and use FindSequence(array, A, B); // 1 - increasing, 0 - no sequence, -1 - decreasing
+        // A and B - start and end indexes of elements from array for search        
 
-        // create and use FindSequence(array, A, B); // 1 - increasing, 0 - no sequence,  -1 - decreasing
-        // A and B - start and end indexes of elements from array for search
+        answerFirst = FindSequence(first, 0, first.Length - 1);
+        answerSecond = FindSequence(second, 0, second.Length - 1);
+
+        Console.WriteLine(answerFirst + " " + answerSecond);
 
         // end
     }
@@ -1058,9 +1359,83 @@ public class Program
     public void Task_2_28b(int[] first, int[] second, ref int[,] answerFirst, ref int[,] answerSecond)
     {
         // code here
-
         // use FindSequence(array, A, B); from Task_2_28a or entirely Task_2_28a
         // A and B - start and end indexes of elements from array for search
+
+        int kolvo = 0;
+        for (int i = 0; i < first.Length - 1; i++)
+        {
+            for (int j = i + 1; j < first.Length; j++)
+            {
+                int a = FindSequence(first, i, j);
+                if (a == 1 || a == -1) { kolvo++; }
+                else if (a == 0) { break; }
+            }            
+        }
+        answerFirst = new int[kolvo, 2];
+        kolvo = 0;
+        for (int i = 0; i < second.Length - 1; i++)
+        {
+            for (int j = i + 1; j < second.Length; j++)
+            {
+                int a = FindSequence(second, i, j);
+                if (a == 1 || a == -1) { kolvo++; }
+                else if (a == 0) { break; }
+            }
+        }
+        answerSecond = new int[kolvo, 2];
+
+        int index = 0;
+        for (int i = 0; i < first.Length - 1; i++)
+        {
+            for (int j = i + 1; j < first.Length; j++)
+            {
+                int a = FindSequence(first, i, j);
+                if (a == 1 || a == -1) 
+                {
+                    answerFirst[index, 0] = i;
+                    answerFirst[index, 1] = j;
+                    index++;
+                }
+                else if (a == 0) { break; }
+            }
+        }
+        index = 0;
+        for (int i = 0; i < second.Length - 1; i++)
+        {
+            for (int j = i + 1; j < second.Length; j++)
+            {
+                int a = FindSequence(second, i, j);
+                if (a == 1 || a == -1) 
+                {
+                    answerSecond[index, 0] = i;
+                    answerSecond[index, 1] = j;
+                    index++;
+                }
+                else if (a == 0) { break; }
+            }
+        }
+
+        Console.WriteLine("b: First: ");
+        for (int i = 0; i < answerFirst.GetLength(0); i++)
+        {
+            for (int j = 0; j < answerFirst.GetLength(1); j++)
+            {
+                Console.Write(answerFirst[i, j] + " ");
+            }
+            Console.Write(", ");
+        }
+        Console.WriteLine();
+        Console.WriteLine("b: Second: ");
+        for (int i = 0; i < answerSecond.GetLength(0); i++)
+        {
+            for (int j = 0; j < answerSecond.GetLength(1); j++)
+            {
+                Console.Write(answerSecond[i, j] + " ");
+            }
+            Console.Write(", ");
+        }
+        Console.WriteLine();
 
         // end
     }
@@ -1068,9 +1443,45 @@ public class Program
     public void Task_2_28c(int[] first, int[] second, ref int[] answerFirst, ref int[] answerSecond)
     {
         // code here
-
         // use FindSequence(array, A, B); from Task_2_28a or entirely Task_2_28a or Task_2_28b
         // A and B - start and end indexes of elements from array for search
+
+        int[,] matrixF = null;
+        int[,] matrixS = null;
+
+        Task_2_28b(first, second, ref matrixF, ref matrixS);
+
+        int elemax = -999;
+        for (int i = 0; i < matrixF.GetLength(0); i++)
+        {
+            if (elemax < matrixF[i, 1] - matrixF[i, 0])
+            {
+                elemax = matrixF[i, 1] - matrixF[i, 0];
+                answerFirst = new int[] { matrixF[i, 0], matrixF[i, 1] };
+            }
+        }
+        elemax = -999;
+        for (int i = 0; i < matrixS.GetLength(0); i++)
+        {
+            if (elemax < matrixS[i, 1] - matrixS[i, 0])
+            {
+                elemax = matrixS[i, 1] - matrixS[i, 0];
+                answerSecond = new int[] { matrixS[i, 0], matrixS[i, 1] };
+            }
+        }
+
+        Console.WriteLine("c: First: ");
+        for (int i = 0; i < answerFirst.GetLength(0); i++)
+        {
+            Console.Write(answerFirst[i] + " ");
+        }
+        Console.WriteLine();
+        Console.WriteLine("c: Second: ");
+        for (int i = 0; i < answerSecond.GetLength(0); i++)
+        {
+            Console.Write(answerSecond[i] + " ");
+        }
+        Console.WriteLine();
 
         // end
     }
