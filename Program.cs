@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,10 +155,17 @@ public class Program
         //int[,] answerSecond = null;
         //program.Task_2_28b(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
         //                   ref answerFirst, ref answerSecond);
-        int[] answerFirst = null;
-        int[] answerSecond = null;
-        program.Task_2_28c(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
-                           ref answerFirst, ref answerSecond);
+        //int[] answerFirst = null;
+        //int[] answerSecond = null;
+        //program.Task_2_28c(new int[] { -3, 5, 5, 1, 0, 4 }, new int[] { 13, 10, 1, 0, -2, -4 },
+        //                   ref answerFirst, ref answerSecond);
+
+        program.Task_3_2(new int[,] {
+            { 1, 2, 3, 4, 5, -1 },
+            { 6, 7, 8, 9, 10, -2 },
+            { 11, 12, 13, 14, 15, -3 },
+            { -1, -2, -3, -4, -5, -1 },
+            { 6, 7, 8, 9, 0, -2 }});
 
 
     }
@@ -320,7 +327,7 @@ public class Program
             distance2 = GetDistance(v2, a2, answer);
         }
         answer -= 1;
-        Console.WriteLine("Через " + answer + " час(а/ов)");
+        Console.WriteLine("Г—ГҐГ°ГҐГ§ " + answer + " Г·Г Г±(Г /Г®Гў)");
 
         // end
 
@@ -676,7 +683,7 @@ public class Program
         // code here
         // create and use FindMaxColumnIndex(matrix);
 
-        if (A.GetLength(0) != B.GetLength(0) || A.GetLength(1) != B.GetLength(1)) 
+        if (A.GetLength(0) != B.GetLength(0) || A.GetLength(1) != B.GetLength(1))
         {
             Console.WriteLine("Error");
             return;
@@ -695,7 +702,7 @@ public class Program
                         jmax = j;
                     }
                 }
-            }            
+            }
             return jmax;
         }
 
@@ -758,7 +765,7 @@ public class Program
                 int current = ar[i], j = i - 1;
                 while (j >= 0 && ar[j] > current)
                 {
-                    ar[j + 1] = ar[j]; 
+                    ar[j + 1] = ar[j];
                     j--;
                 }
                 ar[j + 1] = current;
@@ -823,7 +830,7 @@ public class Program
                     a[k] = array[i];
                     k++;
                 }
-            }            
+            }
             for (int i = 1; i < a.Length; i++)
             {
                 int current = a[i], j = i - 1;
@@ -841,7 +848,7 @@ public class Program
                     array[i] = a[k];
                     k++;
                 }
-            }            
+            }
         }
 
         SortNegative(A);
@@ -1074,7 +1081,7 @@ public class Program
             return kolvoOtriz;
         }
         static int[] FindMaxNegativePerColumn(int[,] matrix)
-        {            
+        {
             int[] elements = new int[matrix.GetLength(1)];
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
@@ -1086,7 +1093,7 @@ public class Program
                         elemaxOtriz = matrix[i, j];
                     }
                 }
-                if (elemaxOtriz != -999) { elements[j] = elemaxOtriz; }                    
+                if (elemaxOtriz != -999) { elements[j] = elemaxOtriz; }
                 else { elements[j] = 0; }
             }
             return elements;
@@ -1097,9 +1104,9 @@ public class Program
         {
             rows[i] = CountNegativeInRow(matrix, i);
         }
-        
+
         cols = FindMaxNegativePerColumn(matrix);
-        
+
         Console.Write("rows: ");
         for (int i = 0; i < rows.Length; i++)
         {
@@ -1137,7 +1144,7 @@ public class Program
             Console.WriteLine("Error");
             return;
         }
-        
+
         static void FindMaxIndex(int[,] matrix, out int row, out int column)
         {
             row = 0; column = 0;
@@ -1149,8 +1156,8 @@ public class Program
                     if (matrix[i, j] > elemax)
                     {
                         elemax = matrix[i, j];
-                        row = i; 
-                        column = j; 
+                        row = i;
+                        column = j;
                     }
                 }
             }
@@ -1213,11 +1220,11 @@ public class Program
         // code here
         // create and use FindRowWithMaxNegativeCount(matrix); like in 2_25
         // in FindRowWithMaxNegativeCount use CountNegativeInRow(matrix, rowIndex); from 2_22
-        //В двух заданных матрицах одинакового размера поменять строки, содержащие
-        //максимальное количество отрицательных элементов. Нахождение количества
-        //отрицательных элементов заданной строки матрицы осуществлять в методе.
-        //Определение номера строки, содержащей максимальное количество отрицательных
-        //элементов, осуществлять в методе.
+        //Г‚ Г¤ГўГіГµ Г§Г Г¤Г Г­Г­Г»Гµ Г¬Г ГІГ°ГЁГ¶Г Гµ Г®Г¤ГЁГ­Г ГЄГ®ГўГ®ГЈГ® Г°Г Г§Г¬ГҐГ°Г  ГЇГ®Г¬ГҐГ­ГїГІГј Г±ГІГ°Г®ГЄГЁ, Г±Г®Г¤ГҐГ°Г¦Г Г№ГЁГҐ
+        //Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®ГІГ°ГЁГ¶Г ГІГҐГ«ГјГ­Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў. ГЌГ ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ 
+        //Г®ГІГ°ГЁГ¶Г ГІГҐГ«ГјГ­Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г§Г Г¤Г Г­Г­Г®Г© Г±ГІГ°Г®ГЄГЁ Г¬Г ГІГ°ГЁГ¶Г» Г®Г±ГіГ№ГҐГ±ГІГўГ«ГїГІГј Гў Г¬ГҐГІГ®Г¤ГҐ.
+        //ГЋГЇГ°ГҐГ¤ГҐГ«ГҐГ­ГЁГҐ Г­Г®Г¬ГҐГ°Г  Г±ГІГ°Г®ГЄГЁ, Г±Г®Г¤ГҐГ°Г¦Г Г№ГҐГ© Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®ГІГ°ГЁГ¶Г ГІГҐГ«ГјГ­Г»Гµ
+        //ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў, Г®Г±ГіГ№ГҐГ±ГІГўГ«ГїГІГј Гў Г¬ГҐГІГ®Г¤ГҐ.
 
         if (A.GetLength(0) != B.GetLength(0) || A.GetLength(1) != B.GetLength(1))
         {
@@ -1315,7 +1322,7 @@ public class Program
                     count++;
                 }
             }
-            if (count == (B - A)) 
+            if (count == (B - A))
             {
                 return 1;
             }
@@ -1370,7 +1377,7 @@ public class Program
                 int a = FindSequence(first, i, j);
                 if (a == 1 || a == -1) { kolvo++; }
                 else if (a == 0) { break; }
-            }            
+            }
         }
         answerFirst = new int[kolvo, 2];
         kolvo = 0;
@@ -1391,7 +1398,7 @@ public class Program
             for (int j = i + 1; j < first.Length; j++)
             {
                 int a = FindSequence(first, i, j);
-                if (a == 1 || a == -1) 
+                if (a == 1 || a == -1)
                 {
                     answerFirst[index, 0] = i;
                     answerFirst[index, 1] = j;
@@ -1406,7 +1413,7 @@ public class Program
             for (int j = i + 1; j < second.Length; j++)
             {
                 int a = FindSequence(second, i, j);
-                if (a == 1 || a == -1) 
+                if (a == 1 || a == -1)
                 {
                     answerSecond[index, 0] = i;
                     answerSecond[index, 1] = j;
@@ -1491,23 +1498,95 @@ public class Program
     public void Task_3_1(ref double[,] firstSumAndY, ref double[,] secondSumAndY)
     {
         // code here
-
         // create and use public delegate SumFunction(x) and public delegate YFunction(x)
         // create and use method GetSumAndY(sFunction, yFunction, a, b, h);
         // create and use 2 methods for both functions calculating at specific x
+
+
 
         // end
     }
 
     public void Task_3_2(int[,] matrix)
     {
-        // SortRowStyle sortStyle = default(SortRowStyle); - uncomment me
+        //SortRowStyle sortStyle = default(SortRowStyle);
 
         // code here
-
         // create and use public delegate SortRowStyle(matrix, rowIndex);
         // create and use methods SortAscending(matrix, rowIndex) and SortDescending(matrix, rowIndex)
         // change method in variable sortStyle in the loop here and use it for row sorting
+
+        //Р’ Р·Р°РґР°РЅРЅРѕР№ РјР°С‚СЂРёС†Рµ СЂР°СЃРїРѕР»РѕР¶РёС‚СЊ СЌР»РµРјРµРЅС‚С‹ С‡РµС‚РЅС‹С… СЃС‚СЂРѕРє РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ, Р°
+        //СЌР»РµРјРµРЅС‚С‹ РЅРµС‡РµС‚РЅС‹С… СЃС‚СЂРѕРє вЂ“ РІ РїРѕСЂСЏРґРєРµ СѓР±С‹РІР°РЅРёСЏ.РћР±СЂР°Р±РѕС‚РєСѓ РјР°С‚СЂРёС†С‹ РїРѕ СЃС‚СЂРѕРєР°Рј
+        //РѕСЃСѓС‰РµСЃС‚РІР»СЏС‚СЊ РІ РјРµС‚РѕРґРµ. Р”Р»СЏ СѓРїРѕСЂСЏРґРѕС‡РµРЅРёСЏ СЃС‚СЂРѕРєРё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґРµР»РµРіР°С‚Р°.
+
+        //delegate SortRowStyle(matrix, rowIndex);
+
+        static void SortAscending(ref int[,] matrix, int rowIndex)
+        {
+            int[] m = new int[matrix.GetLength(1)];
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                m[j] = matrix[rowIndex, j];
+            }
+            for (int i = 1; i < m.Length; i++)
+            {
+                int current =m[i], j = i - 1;
+                while (j >= 0 && m[j] > current)
+                {
+                    m[j + 1] = m[j]; 
+                    j--;
+                }
+                m[j + 1] = current;
+            }
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                matrix[rowIndex, j] = m[j];
+            }
+        }
+        static void SortDescending(ref int[,] matrix, int rowIndex)
+        {
+            int[] m = new int[matrix.GetLength(1)];
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                m[j] = matrix[rowIndex, j];
+            }
+            for (int i = 1; i < m.Length; i++)
+            {
+                int current = m[i], j = i - 1;
+                while (j >= 0 && m[j] < current)
+                {
+                    m[j + 1] = m[j];
+                    j--;
+                }
+                m[j + 1] = current;
+            }
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                matrix[rowIndex, j] = m[j];
+            }
+        }
+
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            if (i % 2 == 0)
+            {
+                SortAscending(ref matrix, i);
+            }
+            else
+            {
+                SortDescending(ref matrix, i);
+            }
+        }
+
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                Console.Write(matrix[i,j] + " ");
+            }
+            Console.WriteLine();
+        }
 
         // end
     }
@@ -1518,11 +1597,12 @@ public class Program
         // SwapDirection swapper = default(SwapDirection); - uncomment me
 
         // code here
-
         // create and use public delegate SwapDirection(array);
         // create and use methods SwapRight(array) and SwapLeft(array)
         // create and use method GetSum(array, start, h) that sum elements with a negative indexes
         // change method in variable swapper in the if/else and than use swapper(matrix)
+
+
 
         // end
 
@@ -1534,7 +1614,6 @@ public class Program
         int answer = 0;
 
         // code here
-
         // create and use public delegate GetTriangle(matrix);
         // create and use methods GetUpperTriange(array) and GetLowerTriange(array)
         // create and use GetSum(GetTriangle, matrix)
